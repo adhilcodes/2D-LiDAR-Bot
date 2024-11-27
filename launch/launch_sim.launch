@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Package name -->
+    <arg name="package_name" default="lidarbot"/>
+    
+    <!-- Use sim time -->
+    <param name="/use_sim_time" type="bool" value="true"/>
+    
+    <!-- Process the xacro file and set as robot_description parameter -->
+    <param name="robot_description" 
+           command="$(find xacro)/xacro $(find lidarbot)/urdf/robot.urdf.xacro"/>
+    
+    <!-- Include robot state publisher launch file -->
+    <include file="$(find lidarbot)/launch/rsp.launch">
+        <arg name="use_sim_time" value="true"/>
+    </include>
+    
+    <!-- Launch Gazebo -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find lidarbot)/worlds/obstacles.world"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
+    
+    <!-- Spawn robot entity -->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+          args="-param robot_description -urdf -model my_bot"
+          output="screen"/>
+</launch>

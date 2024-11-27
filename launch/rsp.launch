@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Use Sim Time Argument -->
+    <arg name="use_sim_time" default="false"/>
+    
+    <!-- Package Path -->
+    <arg name="package_name" default="lidarbot"/>
+    
+    <!-- Xacro File Path -->
+    <arg name="xacro_file" 
+         default="$(find lidarbot)/urdf/robot.urdf.xacro"/>
+    
+    <!-- Process Xacro File -->
+    <param name="robot_description" 
+           command="$(find xacro)/xacro $(arg xacro_file)"/>
+    
+    <!-- Robot State Publisher Node -->
+    <node name="robot_state_publisher" 
+          pkg="robot_state_publisher" 
+          type="robot_state_publisher" 
+          output="screen">
+        <!-- Pass Use Sim Time Parameter -->
+        <param name="use_sim_time" value="$(arg use_sim_time)"/>
+    </node>
+</launch>
