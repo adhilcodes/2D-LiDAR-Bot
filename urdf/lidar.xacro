@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    
+
 
     <joint name="laser_joint" type="fixed">
         <parent link="chassis" />
@@ -29,8 +29,8 @@
     <gazebo reference="laser_frame">
         <material>Gazebo/Red</material>
 
-        <sensor name="laser" type="ray">
-            <pose> 0 0 0 0 0 0 </pose>
+        <sensor type="ray" name="laser_sensor">
+            <pose>0 0 0 0 0 0</pose>
             <visualize>true</visualize>
             <update_rate>10</update_rate>
             <ray>
@@ -42,17 +42,13 @@
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.3</min> <!-- in meters-->
+                    <min>0.3</min>
                     <max>12</max>
                 </range>
             </ray>
-
-            <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
-                <ros>
-                    <argument>~/out:=scan</argument> <!-- Topic name -->
-                </ros>
-                <output_type>sensor_msgs/LaserScan</output_type> 
-                <frame_name>laser_frame</frame_name>  <!-- Frame name -->
+            <plugin name="gazebo_ros_laser" filename="libgazebo_ros_laser.so">
+                <topicName>/scan</topicName>
+                <frameName>laser_frame</frameName>
             </plugin>
         </sensor>
     </gazebo>
