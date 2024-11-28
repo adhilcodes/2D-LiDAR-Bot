@@ -1,0 +1,16 @@
+<launch>
+    <!-- Start SLAM Toolbox -->
+    <node name="slam_toolbox" pkg="slam_toolbox" type="sync_slam_toolbox_node" output="screen">
+        <param name="use_sim_time" value="true"/> 
+        <param name="odom_frame" value="odom"/>
+        <param name="map_frame" value="map"/>
+        <param name="base_frame" value="base_link"/>
+        <param name="scan_topic" value="/scan"/>
+        <param name="mode" value="mapping"/> <!-- 'mapping' or 'localization' -->
+    </node>
+
+    <!-- RViz -->
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find lidarbot)/rviz/slam_config.rviz"/>
+
+</launch>
+
