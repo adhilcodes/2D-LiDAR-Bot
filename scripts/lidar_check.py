@@ -21,8 +21,6 @@ class SensorCheck:
         front = min(data.ranges[136:225]) 
         right = min(data.ranges[226:314])
         
-        # rospy.loginfo(f"Distances - Front: {front:.2f}, Left: {left:.2f}, Right: {right:.2f}, Back: {back:.2f}")
-
 
         # if front != float('inf'):
         #     print("The object is in front")
@@ -64,4 +62,3 @@ if __name__ == '__main__':
     rospy.init_node('lidar_check') 
     SensorCheck()
     rospy.spin()
-

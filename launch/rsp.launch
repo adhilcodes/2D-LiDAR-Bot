@@ -11,8 +11,8 @@
          default="$(find lidarbot)/urdf/robot.urdf.xacro"/>
     
     <!-- Process Xacro File -->
-    <param name="robot_description" 
-           command="$(find xacro)/xacro $(arg xacro_file)"/>
+    <!-- <param name="robot_description" 
+           command="$(find xacro)/xacro $(arg xacro_file)"/> -->
     
     <!-- Robot State Publisher Node -->
     <node name="robot_state_publisher" 

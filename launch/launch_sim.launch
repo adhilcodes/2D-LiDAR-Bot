@@ -17,7 +17,7 @@
 
     <!-- Launch Gazebo -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(find lidarbot)/worlds/emty.world" />
+        <arg name="world_name" value="$(find lidarbot)/worlds/empty.world" />
         <arg name="paused" value="false" />
         <arg name="use_sim_time" value="true" />
         <arg name="gui" value="true" />
@@ -32,9 +32,10 @@
 
     <!-- Run LiDAR check node -->
     <node pkg="lidarbot" type="lidar_check.py" name="lidar_check" output="screen" />
-
+    
     <!-- Include SLAM -->
-    <!-- <include file="$(find lidarbot)/launch/lidar_slam.launch"/> -->
-
+    <node pkg="tf" type="static_transform_publisher" 
+      name="base_footprint_to_base_link" 
+      args="0 0 0 0 0 0 base_link base_footprint 100" />
 
 </launch>

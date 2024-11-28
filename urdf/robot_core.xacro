@@ -180,7 +180,7 @@
             <!-- Additional Parameters -->
             <publishWheelTF>false</publishWheelTF>
             <publishOdomTF>true</publishOdomTF>
-            <publishWheelJointState>false</publishWheelJointState>
+            <publishWheelJointState>true</publishWheelJointState>
             
             <wheelAcceleration>0</wheelAcceleration>
             <wheelTorque>1</wheelTorque>
