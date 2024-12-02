@@ -45,7 +45,7 @@ source devel/setup.bash
 ## Running Simulation
 ```bash
 roslaunch lidarbot launch_sim.launch
-roslaunch slam_toolbox online_async.launch
+roslaunch slam_toolbox online_async.launch params_file:=./src/lidarbot/config/mapper_params_online_async.yaml use_sim_time:=true
    ```
 
 ## Configuration
