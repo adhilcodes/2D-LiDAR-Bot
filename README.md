@@ -41,7 +41,8 @@ cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
 ```
-   
+Make sure you change the catkin package name in `launch_sim.launch` and `rsp.launch`(current pkg name: `lidarbot`)
+
 ## Running Simulation
 ```bash
 roslaunch lidarbot launch_sim.launch
